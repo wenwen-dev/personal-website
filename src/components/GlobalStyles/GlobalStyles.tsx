@@ -17,6 +17,7 @@ html, body, #root {
 }
 
 body {
+  color: var(--color-text-dark);
   font-family: var(--font), sans-serif;
   line-height: 1.5;
 }
@@ -45,7 +46,7 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Global CSS Variables */
 
 :root {
-  --color-text-dark: hsl(231, 33%, 34%);
+  --color-text-dark: hsl(231, 33%, 34%); //
   --color-text-light: hsl(224, 20%, 49%);
   --background: hsl(0, 0%, 100%);
   --font: 'Jost';
