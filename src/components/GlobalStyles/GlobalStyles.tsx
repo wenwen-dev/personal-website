@@ -20,6 +20,7 @@ body {
   color: var(--color-text-dark);
   font-family: var(--font), sans-serif;
   line-height: 1.5;
+  background-color: var(--background-page)
 }
 
 body {
@@ -48,7 +49,8 @@ p, h1, h2, h3, h4, h5, h6 {
 :root {
   --color-text-dark: hsl(231, 33%, 34%); //
   --color-text-light: hsl(224, 20%, 49%);
-  --background: hsl(0, 0%, 100%);
+  --background-card: hsl(0, 0%, 100%);
+  --background-page: #F7F8FD;
   --font: 'Jost';
 }
 

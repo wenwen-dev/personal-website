@@ -1,5 +1,6 @@
 import './App.css';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles';
+import styled from 'styled-components';
 import Card from './components/Card';
 
 let data = {
@@ -332,7 +333,7 @@ let data = {
 
 function App() {
   return (
-    <>
+    <Wrapper>
       {data.productRequests.map(request => (
         <Card
           key={request.id}
@@ -344,8 +345,12 @@ function App() {
         />
       ))}
       <GlobalStyles />
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  padding: 30px;
+`;
 
 export default App;

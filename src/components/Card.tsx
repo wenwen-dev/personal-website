@@ -28,7 +28,11 @@ const Wrapper = styled.article`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-  gap: 8px;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 20px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 6px;
 `;
 
 const FeedbackWrapper = styled.div`
