@@ -335,10 +335,12 @@ function App() {
     <>
       {data.productRequests.map(request => (
         <Card
+          key={request.id}
           title={request.title}
           details={request.description}
           category={request.category}
           voteCount={request.upvotes}
+          commentCount={request.comments?.length}
         />
       ))}
       <GlobalStyles />
