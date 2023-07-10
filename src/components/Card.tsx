@@ -3,25 +3,43 @@ import Vote from './Vote';
 import styled from 'styled-components';
 
 interface Props {
-  title: string;
-  details: string;
-  category: string;
-  voteCount: number;
-  commentCount: number | undefined;
+  req: Request;
+  handleClick: (request: Request) => void;
 }
 
-const Card = ({ title, details, category, voteCount, commentCount }: Props) => {
+const Card = ({ req, handleClick }: Props) => {
   return (
     <Wrapper>
-      <Vote voteCount={voteCount} />
+      <Vote req={req} handleClick={handleClick} />
       <FeedbackWrapper>
-        <Title>{title}</Title>
-        <Details>{details}</Details>
-        <Category>{category}</Category>
+        <Title>{req.title}</Title>
+        <Details>{req.description}</Details>
+        <Category>{req.category}</Category>
       </FeedbackWrapper>
-      <CommentCount commentCount={commentCount} />
+      {/* <CommentCount/> */}
     </Wrapper>
   );
+};
+
+export type Request = {
+  id: number;
+  title: string;
+  upvotes: number;
+  description: string;
+  category: string;
+  commentCount?: number;
+  status?: string;
+  comments?: Comment[];
+};
+
+export type Comment = {
+  id: number;
+  content?: string;
+  user?: {
+    image?: string;
+    name?: string;
+    username?: string;
+  };
 };
 
 const Wrapper = styled.article`

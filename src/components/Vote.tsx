@@ -1,8 +1,31 @@
 import styled from 'styled-components';
+import { Request } from './Card';
 
 interface Props {
-  voteCount: number;
+  req: Request;
+  handleClick: (request: Request) => void;
 }
+
+const Vote = ({ req, handleClick }: Props) => {
+  return (
+    <Wrapper
+      onClick={() => {
+        handleClick(req);
+      }}
+    >
+      <ArrowUp width='10' height='7' xmlns='http://www.w3.org/2000/svg'>
+        <path
+          d='M1 6l4-4 4 4'
+          stroke='#4661E6'
+          strokeWidth='2'
+          fill='none'
+          fillRule='evenodd'
+        />
+      </ArrowUp>
+      <VoteCount>{req.upvotes}</VoteCount>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,24 +37,23 @@ const Wrapper = styled.div`
   width: 40px;
   height: 53px;
   border-radius: 10px;
+
+  &:hover {
+    background-color: #cfd7ff;
+  }
+
+  &:active {
+    background-color: #4661e6;
+    color: #979797;
+  }
 `;
 
-const VoteCount = styled.p``;
-const Vote = ({ voteCount }: Props) => {
-  return (
-    <Wrapper>
-      <svg width='10' height='7' xmlns='http://www.w3.org/2000/svg'>
-        <path
-          d='M1 6l4-4 4 4'
-          stroke='#4661E6'
-          strokeWidth='2'
-          fill='none'
-          fillRule='evenodd'
-        />
-      </svg>
-      <VoteCount>{voteCount}</VoteCount>
-    </Wrapper>
-  );
-};
+const ArrowUp = styled.svg``;
+
+const VoteCount = styled.p`
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: -0.18px;
+`;
 
 export default Vote;

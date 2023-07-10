@@ -2,6 +2,7 @@ import './App.css';
 import GlobalStyles from './components/GlobalStyles/GlobalStyles';
 import styled from 'styled-components';
 import Card from './components/Card';
+import { Request } from './components/Card';
 
 let data = {
   currentUser: {
@@ -337,17 +338,32 @@ function App() {
       {data.productRequests.map(request => (
         <Card
           key={request.id}
-          title={request.title}
-          details={request.description}
-          category={request.category}
-          voteCount={request.upvotes}
-          commentCount={request.comments?.length}
+          req={request}
+          handleClick={handleClick}
+          //Qs: above, why it doesn't require a parameter?
+
+          // title={request.title}
+          // details={request.description}
+          // category={request.category}
+          // voteCount={request.upvotes}
+          // onClick={request => handleClick}
+          // commentCount={request.comments?.length}
         />
       ))}
       <GlobalStyles />
     </Wrapper>
   );
 }
+
+const handleClick = (request: Request): void => {
+  console.log('executing the handleClick function');
+  console.log(request.upvotes);
+
+  let match = data.productRequests.find(req => req.id === request.id);
+
+  if (match) match.upvotes += 1;
+  console.log(match?.upvotes);
+};
 
 const Wrapper = styled.div`
   padding: 30px;
