@@ -5,6 +5,7 @@ import Card from './components/Card';
 import { Request } from './data';
 import { data } from './data';
 import { useState } from 'react';
+import DisplayOptionsBar from './components/DisplayOptionsBar';
 
 function App() {
   const [requests, setRequests] = useState(data.productRequests);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <Wrapper>
+      <DisplayOptionsBar />
       {requests.map(request => (
         <Card
           key={request.id}
@@ -39,6 +41,9 @@ function App() {
 
 const Wrapper = styled.div`
   padding: 30px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default App;
