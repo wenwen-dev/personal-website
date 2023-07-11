@@ -17,7 +17,7 @@ html, body, #root {
 }
 
 body {
-  color: var(--color-text-dark);
+  color: var(--color-text-para);
   font-family: var(--font), sans-serif;
   line-height: 1.5;
   background-color: var(--background-page)
@@ -38,6 +38,7 @@ input, button, textarea, select {
 
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
+  color: var(--color-text-title);
 }
 
 #root {
@@ -47,8 +48,8 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Global CSS Variables */
 
 :root {
-  --color-text-dark: hsl(231, 33%, 34%); //
-  --color-text-light: hsl(224, 20%, 49%);
+  --color-text-title: hsl(231, 33%, 34%); //
+  --color-text-para: hsl(224, 20%, 49%);
   --background-card: hsl(0, 0%, 100%);
   --background-page: #F7F8FD;
   --font: 'Jost';

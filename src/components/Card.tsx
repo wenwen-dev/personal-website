@@ -35,11 +35,28 @@ const Wrapper = styled.article`
 
 const FeedbackWrapper = styled.div`
   flex: auto;
+  //review flex settings
 `;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0cap.25px;
+`;
 
-const Details = styled.p``;
+const Details = styled.p`
+  font-size: 16px;
+`;
 
-const Category = styled.p``;
+const Category = styled.p`
+  background-color: #f2f4ff;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 6px 16px;
+  border-radius: 10px;
+  color: #4661e6;
+  text-transform: capitalize;
+  display: inline-flex;
+`;
 export default Card;
