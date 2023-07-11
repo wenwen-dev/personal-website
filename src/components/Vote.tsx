@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Request } from './Card';
+import { Request } from './../data';
 
 interface Props {
   req: Request;

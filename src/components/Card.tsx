@@ -1,6 +1,7 @@
 import CommentCount from './CommentCount';
 import Vote from './Vote';
 import styled from 'styled-components';
+import { Request } from '../data';
 
 interface Props {
   req: Request;
@@ -19,27 +20,6 @@ const Card = ({ req, handleClick }: Props) => {
       {/* <CommentCount/> */}
     </Wrapper>
   );
-};
-
-export type Request = {
-  id: number;
-  title: string;
-  upvotes: number;
-  description: string;
-  category: string;
-  commentCount?: number;
-  status?: string;
-  comments?: Comment[];
-};
-
-export type Comment = {
-  id: number;
-  content?: string;
-  user?: {
-    image?: string;
-    name?: string;
-    username?: string;
-  };
 };
 
 const Wrapper = styled.article`
