@@ -14,14 +14,18 @@ const CommentCount = ({ commentCount }: Props) => {
           fillRule='nonzero'
         />
       </svg>
-      <Count>{commentCount ?? 0}</Count>
+      <Count>{commentCount}</Count>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 6px;
+  gap: 8px;
+  max-width: 44px;
+  max-height: 23px;
+  /* justify-content: space-between; */
+  align-items: center;
 `;
 
 const Count = styled.p``;
