@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-  commentCount: number | undefined;
+  commentCount: number;
 }
 
 const CommentCount = ({ commentCount }: Props) => {

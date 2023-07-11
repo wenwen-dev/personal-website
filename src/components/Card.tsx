@@ -17,7 +17,7 @@ const Card = ({ req, handleClick }: Props) => {
         <Details>{req.description}</Details>
         <Category>{req.category}</Category>
       </FeedbackWrapper>
-      {/* <CommentCount/> */}
+      <CommentCount commentCount={req.comments ? req.comments.length : 0} />
     </Wrapper>
   );
 };

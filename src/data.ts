@@ -14,7 +14,6 @@ export interface Request {
   upvotes: number;
   description: string;
   category: string;
-  commentCount?: number;
   status?: string;
   comments?: Comment[];
 };
@@ -22,14 +21,22 @@ export interface Request {
 
 export interface Comment {
   id: number;
-  content?: string;
-  user?: {
-    image?: string;
-    name?: string;
-    username?: string;
-  };
+  content: string;
+  user: User;
+  replies?: Reply[];
 };
 
+export interface User {
+  image: string;
+  name: string;
+  username: string;
+}
+
+export interface Reply {
+  content: string;
+  replyingTo: string;
+  user: User;
+}
 
 
 export const data = {
