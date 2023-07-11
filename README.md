@@ -4,7 +4,7 @@ This is a project to practice frontend skills, incl. HTML, CSS, JavaScript, Reac
 
 ## Learnings
 
-1. On how to store data, make functions pure - [77b0d93]
+1. On how to store data, make functions pure - [77b0d93] -> [61b9316]
 
 - Issue: used props to pass data and handler functions from App.tsx to its children, but page did not re-render
 - Cause: the data was stored in App.tsx, before the function App, as a global variable, which made the function not pure. And by design, React re-renders when state and props change, not when global variables change
