@@ -1,13 +1,42 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
-const SortSelector = () => {
+interface Props {
+  sortOptions: Option[];
+}
+
+interface Option {
+  id: number;
+  name: string;
+}
+
+const SortSelector = ({ sortOptions }: Props) => {
+  const [currentSort, setCurrentSort] = useState(sortOptions[0]);
+
+  const [menuIsExtended, setMenuExtended] = useState(false);
+
+  const handleToggle = () => {
+    console.log('toggling');
+    setMenuExtended(!menuIsExtended);
+  };
+
   return (
     <Wrapper>
       <span>Sort by: </span>
-      <span>Most Upvotes</span>
+      <CurrentSort onClick={handleToggle}>{currentSort.name}</CurrentSort>
+      {menuIsExtended ? (
+        <SortOptions>
+          {sortOptions.map(option => (
+            <li key={option.id}>{option.name}</li>
+          ))}
+        </SortOptions>
+      ) : (
+        <></>
+      )}
+
       <ArrowUp width='10' height='7' xmlns='http://www.w3.org/2000/svg'>
         <path
-          d='M1 6l4-4 4 4'
+          d='M1 1l4 4 4-4'
           stroke='#FFFFFF'
           strokeWidth='2'
           fill='none'
@@ -30,8 +59,10 @@ const ArrowUp = styled.svg`
   display: inline;
 `;
 
-const SortOption = styled.span`
-  display: inline;
+const CurrentSort = styled.span`
   font-weight: 700;
+  cursor: pointer;
 `;
+
+const SortOptions = styled.ul``;
 export default SortSelector;

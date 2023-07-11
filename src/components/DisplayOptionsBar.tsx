@@ -1,8 +1,32 @@
 import styled from 'styled-components';
 import SortSelector from './SortSelector';
 import Button from './Button';
+import { useState } from 'react';
 
-const DisplayOptionsBar = () => {
+interface Props {
+  suggestionCount: number;
+}
+
+const DisplayOptionsBar = ({ suggestionCount }: Props) => {
+  const [sortOptions, setSortOptions] = useState([
+    {
+      id: 1,
+      name: 'Most Upvotes',
+    },
+    {
+      id: 2,
+      name: 'Least Upvotes',
+    },
+    {
+      id: 3,
+      name: 'Most Comments',
+    },
+    {
+      id: 4,
+      name: 'Least Comments',
+    },
+  ]);
+
   return (
     <Wrapper>
       <Left>
@@ -13,10 +37,10 @@ const DisplayOptionsBar = () => {
             fillRule='nonzero'
           />
         </svg>
-        <Title>Suggestions</Title>
-        <SortSelector />
+        <Title>{suggestionCount} Suggestions</Title>
+        <SortSelector sortOptions={sortOptions} />
       </Left>
-      <Button></Button>
+      <Button />
     </Wrapper>
   );
 };
@@ -34,13 +58,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`;
-
-const Right = styled.button`
-  display: flex;
-  &::before {
-    content: '+';
-  }
 `;
 
 const Title = styled.h2`

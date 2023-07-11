@@ -25,7 +25,11 @@ function App() {
 
   return (
     <Wrapper>
-      <DisplayOptionsBar />
+      <DisplayOptionsBar
+        suggestionCount={
+          requests.filter(req => req.status === 'suggestion').length
+        }
+      />
       <CardGrid>
         {requests.map(request => (
           <Card
