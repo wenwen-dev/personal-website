@@ -26,14 +26,16 @@ function App() {
   return (
     <Wrapper>
       <DisplayOptionsBar />
-      {requests.map(request => (
-        <Card
-          key={request.id}
-          req={request}
-          handleClick={handleClick}
-          //Qs: above, why it doesn't require a parameter?
-        />
-      ))}
+      <CardGrid>
+        {requests.map(request => (
+          <Card
+            key={request.id}
+            req={request}
+            handleClick={handleClick}
+            //Qs: above, why it doesn't require a parameter?
+          />
+        ))}
+      </CardGrid>
       <GlobalStyles />
     </Wrapper>
   );
@@ -42,6 +44,12 @@ function App() {
 const Wrapper = styled.div`
   padding: 30px;
   gap: 24px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardGrid = styled.div`
+  gap: 20px;
   display: flex;
   flex-direction: column;
 `;

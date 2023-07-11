@@ -28,7 +28,6 @@ const Wrapper = styled.article`
   justify-content: space-between;
   align-items: center;
   gap: 32px;
-  margin-bottom: 20px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 6px;
 `;
