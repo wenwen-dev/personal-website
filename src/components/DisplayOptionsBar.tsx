@@ -2,31 +2,21 @@ import styled from 'styled-components';
 import SortSelector from './SortSelector';
 import Button from './Button';
 import { useState } from 'react';
+import { Option } from './SortSelector';
 
 interface Props {
   suggestionCount: number;
+  sortOptions: Option[];
+  currentSort: Option;
+  onChangeCurrentSort: (sort: Option) => void;
 }
 
-const DisplayOptionsBar = ({ suggestionCount }: Props) => {
-  const [sortOptions, setSortOptions] = useState([
-    {
-      id: 1,
-      name: 'Most Upvotes',
-    },
-    {
-      id: 2,
-      name: 'Least Upvotes',
-    },
-    {
-      id: 3,
-      name: 'Most Comments',
-    },
-    {
-      id: 4,
-      name: 'Least Comments',
-    },
-  ]);
-
+const DisplayOptionsBar = ({
+  suggestionCount,
+  sortOptions,
+  currentSort,
+  onChangeCurrentSort,
+}: Props) => {
   return (
     <Wrapper>
       <Left>
@@ -38,7 +28,11 @@ const DisplayOptionsBar = ({ suggestionCount }: Props) => {
           />
         </svg>
         <Title>{suggestionCount} Suggestions</Title>
-        <SortSelector sortOptions={sortOptions} />
+        <SortSelector
+          sortOptions={sortOptions}
+          currentSort={currentSort}
+          onChangeCurrentSort={onChangeCurrentSort}
+        />
       </Left>
       <Button />
     </Wrapper>

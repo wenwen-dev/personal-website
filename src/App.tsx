@@ -6,9 +6,56 @@ import { Request } from './data';
 import { data } from './data';
 import { useState } from 'react';
 import DisplayOptionsBar from './components/DisplayOptionsBar';
+import { Option } from './components/SortSelector';
 
 function App() {
   const [requests, setRequests] = useState(data.productRequests);
+
+  const [sortOptions, setSortOptions] = useState([
+    {
+      id: 1,
+      name: 'Most Upvotes',
+    },
+    {
+      id: 2,
+      name: 'Least Upvotes',
+    },
+    {
+      id: 3,
+      name: 'Most Comments',
+    },
+    {
+      id: 4,
+      name: 'Least Comments',
+    },
+  ]);
+
+  const [currentSort, setCurrentSort] = useState(sortOptions[0]);
+
+  const handleChangeCurrentSort = (sort: Option) => {
+    setCurrentSort(sort);
+    console.log(currentSort);
+    if (sort.id === 1)
+      setRequests(requests.sort((a, b) => b.upvotes - a.upvotes));
+    else if (sort.id === 2)
+      setRequests(requests.sort((a, b) => a.upvotes - b.upvotes));
+    else if (sort.id === 3)
+      setRequests(
+        requests.sort(
+          (a, b) =>
+            (b.comments ? b.comments.length : 0) -
+            (a.comments ? a.comments.length : 0)
+        )
+      );
+    else if (sort.id === 4)
+      setRequests(
+        requests.sort(
+          (a, b) =>
+            (a.comments ? a.comments.length : 0) -
+            (b.comments ? b.comments.length : 0)
+        )
+      );
+  };
 
   const handleClick = (request: Request): void => {
     console.log('executing the handleClick function');
@@ -29,6 +76,9 @@ function App() {
         suggestionCount={
           requests.filter(req => req.status === 'suggestion').length
         }
+        sortOptions={sortOptions}
+        currentSort={currentSort}
+        onChangeCurrentSort={handleChangeCurrentSort}
       />
       <CardGrid>
         {requests.map(request => (

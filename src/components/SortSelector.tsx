@@ -3,16 +3,20 @@ import styled from 'styled-components';
 
 interface Props {
   sortOptions: Option[];
+  currentSort: Option;
+  onChangeCurrentSort: (sort: Option) => void;
 }
 
-interface Option {
+export interface Option {
   id: number;
   name: string;
 }
 
-const SortSelector = ({ sortOptions }: Props) => {
-  const [currentSort, setCurrentSort] = useState(sortOptions[0]);
-
+const SortSelector = ({
+  sortOptions,
+  currentSort,
+  onChangeCurrentSort,
+}: Props) => {
   const [menuIsExtended, setMenuExtended] = useState(false);
 
   const handleToggle = () => {
@@ -27,7 +31,9 @@ const SortSelector = ({ sortOptions }: Props) => {
       {menuIsExtended ? (
         <SortOptions>
           {sortOptions.map(option => (
-            <li key={option.id}>{option.name}</li>
+            <li key={option.id} onClick={() => onChangeCurrentSort(option)}>
+              {option.name}
+            </li>
           ))}
         </SortOptions>
       ) : (
