@@ -34,7 +34,7 @@ const DisplayOptionsBar = ({
           onChangeCurrentSort={onChangeCurrentSort}
         />
       </Left>
-      <Button />
+      <Button text='+ Add Feedback' />
     </Wrapper>
   );
 };

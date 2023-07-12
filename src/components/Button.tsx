@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-const Button = () => {
-  return <Wrapper>Add Feedback</Wrapper>;
+interface Props {
+  text: string;
+}
+
+const Button = ({ text }: Props) => {
+  return <Wrapper>{text}</Wrapper>;
 };
 
 const Wrapper = styled.button`
