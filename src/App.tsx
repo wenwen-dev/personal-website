@@ -7,6 +7,7 @@ import { data } from './data';
 import { useState } from 'react';
 import DisplayOptionsBar from './components/DisplayOptionsBar';
 import { Option } from './components/SortSelector';
+import TagsPane from './components/TagsPane';
 
 function App() {
   const [requests, setRequests] = useState(data.productRequests);
@@ -72,30 +73,44 @@ function App() {
 
   return (
     <Wrapper>
-      <DisplayOptionsBar
-        suggestionCount={
-          requests.filter(req => req.status === 'suggestion').length
-        }
-        sortOptions={sortOptions}
-        currentSort={currentSort}
-        onChangeCurrentSort={handleChangeCurrentSort}
-      />
-      <CardGrid>
-        {requests.map(request => (
-          <Card
-            key={request.id}
-            req={request}
-            handleClick={handleClick}
-            //Qs: above, why it doesn't require a parameter?
-          />
-        ))}
-      </CardGrid>
-      <GlobalStyles />
+      <LeftWrapper>
+        <TagsPane />
+      </LeftWrapper>
+      <RightWrapper>
+        <DisplayOptionsBar
+          suggestionCount={
+            requests.filter(req => req.status === 'suggestion').length
+          }
+          sortOptions={sortOptions}
+          currentSort={currentSort}
+          onChangeCurrentSort={handleChangeCurrentSort}
+        />
+        <CardGrid>
+          {requests.map(request => (
+            <Card
+              key={request.id}
+              req={request}
+              handleClick={handleClick}
+              //Qs: above, why it doesn't require a parameter?
+            />
+          ))}
+        </CardGrid>
+        <GlobalStyles />
+      </RightWrapper>
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
+  display: flex;
+  gap: 30px;
+`;
+
+const LeftWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const RightWrapper = styled.div`
   padding: 30px;
   gap: 24px;
   display: flex;
