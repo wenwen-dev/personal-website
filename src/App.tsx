@@ -103,6 +103,7 @@ function App() {
 const Wrapper = styled.div`
   display: flex;
   gap: 30px;
+  padding: 30px;
 `;
 
 const LeftWrapper = styled.div`
@@ -111,7 +112,6 @@ const LeftWrapper = styled.div`
 `;
 
 const RightWrapper = styled.div`
-  padding: 30px;
   gap: 24px;
   display: flex;
   flex-direction: column;
