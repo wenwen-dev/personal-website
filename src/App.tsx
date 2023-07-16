@@ -74,7 +74,7 @@ function App() {
   return (
     <Wrapper>
       <LeftWrapper>
-        <TagsPane />
+        <TagsPane requests={requests} />
       </LeftWrapper>
       <RightWrapper>
         <DisplayOptionsBar

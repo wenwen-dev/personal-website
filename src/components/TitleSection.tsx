@@ -19,11 +19,9 @@ const Wrapper = styled.section`
   border-radius: 10px;
   padding: 24px;
   background-image: url(${img});
-  //why using template literals works here?
 `;
 
 const Headings = styled.div``;
-//why setting color here does not apply to its 2 heading children?
 
 const Heading = styled.h1`
   color: hsl(0, 0%, 100%);
