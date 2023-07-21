@@ -8,9 +8,11 @@ import { useState } from 'react';
 import DisplayOptionsBar from './components/DisplayOptionsBar';
 import { Option } from './components/SortSelector';
 import TagsPane from './components/TagsPane';
+import EmptyCardGrid from './components/EmptyCardGrid';
 
 function App() {
   const [requests, setRequests] = useState(data.productRequests);
+  // const [requests, setRequests] = useState([]);
 
   const [sortOptions, setSortOptions] = useState([
     {
@@ -85,6 +87,7 @@ function App() {
           currentSort={currentSort}
           onChangeCurrentSort={handleChangeCurrentSort}
         />
+        <EmptyCardGrid></EmptyCardGrid>
         <CardGrid>
           {requests.map(request => (
             <Card
@@ -95,6 +98,20 @@ function App() {
             />
           ))}
         </CardGrid>
+        {/* {requests ? (
+          <CardGrid>
+            {requests.map(request => (
+              <Card
+                key={request.id}
+                req={request}
+                handleClick={handleClick}
+                //Qs: above, why it doesn't require a parameter?
+              />
+            ))}
+          </CardGrid>
+        ) : (
+          <EmptyCardGrid></EmptyCardGrid>
+        )} */}
         <GlobalStyles />
       </RightWrapper>
     </Wrapper>
